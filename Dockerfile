@@ -1,5 +1,5 @@
 # base image
-FROM nginx:alpine
+FROM nginx:latest
 
 # install jq to get version
 RUN apk add jq
@@ -12,7 +12,7 @@ COPY . /usr/share/nginx/html
 
 # create and copy version
 RUN mkdir -p /usr/share/nginx/version/
-RUN echo "$(jq -r '.version' package.json)" > /usr/share/nginx/version/version.txt
+RUN echo "$(jq -r '.version' /usr/share/nginx/html/package.json)" > /usr/share/nginx/version/version.txt
 
 # copy nginx conf
 COPY nginx.conf /etc/nginx/conf.d/nginx.conf
