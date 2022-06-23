@@ -14,7 +14,7 @@ COPY . /usr/share/nginx/html
 RUN echo "$(jq -r '.version' /usr/share/nginx/html/package.json)" > /usr/share/nginx/html/version.txt
 
 # copy nginx conf
-COPY nginx.conf /etc/nginx/conf.d/nginx.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # expose port 80
 EXPOSE 80

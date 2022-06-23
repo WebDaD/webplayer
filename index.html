@@ -21,14 +21,17 @@
 </head>
 <body>
   <header>
-    <img src="https://www.feierwerk.de/fileadmin/basics/Feierwerk_Logo.svg" alt="Feierwerk Logo">
+    <img src="images/logo.png" alt="Feierwerk Logo">
   </header>
   <div id="metadata">
-    <h1 id="show">SHOW</h1>
-    <span id="interpret">interpret</span> - <span id="title">title</span>
+    <p id="show"><strong>SHOW</strong></p>
+    <p>XX - YY Uhr</p>
+    <p>mit VORNAME NACHNAME</p>
   </div>
+  <img id="button_szene" src="images/button_szene.png" alt="Button" class="player_control"/>
+  <img id="button_kinder" src="images/button_kinder.png" alt="Button" class="player_control"/>
   <div id="player">
-    <audio controls="" preload="metadata">
+    <audio controls="false" preload="metadata" autoplay="true">
       <source id="src_mp3_1" src="" type="audio/mpeg">
       <source id="src_mp3_2" src="" type="audio/mpeg">
       <source id="src_ogg_1" src="" type="audio/ogg">
@@ -36,12 +39,29 @@
       Your browser does not support the audio element.
   </audio>
   </div>
+  <div id="playlist">
+    <h2>Playlist</h2>
+    <ul id="playlist_ul">
+      <li id="playlist_li_1"><span id="interpret">interpret</span> - <span id="title">title</span></li>
+      <li id="playlist_li_2">interpret - title</li>
+      <li id="playlist_li_3">interpret - title</li>
+    </ul>
+  </div>
+  <div id="nothing">
+    <img src="images/nothing.png" alt="Nothing">
+    <br/>
+    <p>
+      Derzeit senden wir leider nicht live.
+    <br/>
+      Du hörst Radio Feierwerk hier im Webstream von <strong>Freitag, 21 bis Sonntag, 24 Uhr</strong>.
+    </p>
+  </div>
   <footer>
     © 2022 Feierwerk e.V.
     |
     <a href="https://www.feierwerk.de/impressum" target="_blank">Impressum</a>
     |
-    <a href="https://www.feierwerk.de/datenschutzerklaerung/" target="_blank">Datenschutz</a>
+    <a href="https://www.feierwerk.de/datenschutzerklaerung/" target="_blank">Datenschutzerklärung</a>
   </footer>
 </body>
 </html>
