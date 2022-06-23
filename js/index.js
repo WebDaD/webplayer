@@ -157,6 +157,7 @@ function loadGraphicalElements(state) {
       $('#button_szene').hide();
       $('#player').hide();
       $('#nothing').hide();
+      $('#playlist').show();
       break;
     case 'szene':
       $('#metadata').show();
@@ -164,6 +165,7 @@ function loadGraphicalElements(state) {
       $('#button_szene').show();
       $('#player').hide();
       $('#nothing').hide();
+      $('#playlist').show();
       break;
     case 'nothing':
       $('#metadata').hide();
@@ -171,6 +173,7 @@ function loadGraphicalElements(state) {
       $('#button_szene').hide();
       $('#player').hide();
       $('#nothing').show();
+      $('#playlist').hide();
       break;
   } 
 }
