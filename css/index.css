@@ -90,16 +90,29 @@ a:hover {
 #playlist h2 {
   text-transform: uppercase;
 }
-#playlist ul {
+.playlist {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-#playlist ul li {
+.playlist_item {
   padding: 5px;
+  list-style:none ;
   padding-left: 10px;
   padding-right: 10px;
   background-color: #fff59b;
   color: #2b4154;
   margin-bottom: 10px;
+}
+
+.rotate {
+  animation: rotation 8s infinite linear;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
 }

@@ -37,8 +37,10 @@ $( document ).ready(function() {
     let audio = $("audio").get(0);
     if(audio.paused) {
       audio.play();
+      $(".player_control").removeClass("rotate");
     } else {
       audio.pause();
+      $(".player_control").addClass("rotate");
     }
   });
 });
@@ -55,6 +57,7 @@ function initSocket() {
   console.log('connected socket')
   socket.on('present_update', function(item) {
     console.log('New Item', JSON.stringify(item))
+    addItemToPlaylist();
     setItem(item)
     getServerTime(function(err, time) {
       if(err) {
@@ -81,6 +84,9 @@ function setItem(item) {
   $('#show').html(item.Show_Name);
   $('#interpret').html(item.Music_Performer);
   $('#title').html(item.Title);
+}
+function addItemToPlaylist() {
+  $('#playlist').append('<li class="playlist_item">' + $('#interpret').html() + ' - ' + $('#title').html() + '</li>');
 }
 function loadError(oError) {
   throw new URIError("The script " + oError.target.src + " didn't load correctly.");
