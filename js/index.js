@@ -38,9 +38,13 @@ $( document ).ready(function() {
     if(audio.paused) {
       audio.play();
       $(".player_control").removeClass("rotate");
+      $("#button_szene").attr("src", "images/button_szene_pause.png")
+      $("#button_kinder").attr("src", "images/button_kinder_pause.png")
     } else {
       audio.pause();
       $(".player_control").addClass("rotate");
+      $("#button_szene").attr("src", "images/button_szene.png")
+      $("#button_kinder").attr("src", "images/button_kinder.png")
     }
   });
 });

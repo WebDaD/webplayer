@@ -73,6 +73,7 @@ a:hover {
 #metadata #show {
   font-size: 1.3rem;
   font-weight: bold;
+  text-transform: uppercase;
 }
 #button_kinder,
 #button_szene {
