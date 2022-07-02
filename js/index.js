@@ -92,6 +92,9 @@ function setItem(item) {
   $('#show').html(item.Show_Name);
   $('#interpret').html(item.Music_Performer);
   $('#title').html(item.Title);
+  $('#presenter').html(item.Presenter);
+  $('#from').html(isoToClock(item.Show_Time_Start));
+  $('#to').html(isoToClock(item.Show_Time_Stop));
 }
 function addItemToPlaylist() {
   $('#playlist').append('<li class="playlist_item">' + $('#interpret').html() + ' - ' + $('#title').html() + '</li>');
@@ -190,4 +193,8 @@ function loadGraphicalElements(state) {
       $('#playlist').hide();
       break;
   } 
+}
+function isoToClock(iso) {
+  var date = new Date(iso);
+  return date.getHours().toString().padStart(2, '0') + ':' + date.getMinutes().toString().padStart(2, '0');
 }
