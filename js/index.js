@@ -16,6 +16,7 @@ $( document ).ready(function() {
   state = 'nothing'; // can be: nothing, szene, kinder
   loadPlayer();
   getItemFromApi();
+  getVersion();
   affixScriptToHead(window["env"]["api"] + '/socket.io/socket.io.js', function () { 
     initSocket();
   });
@@ -124,6 +125,13 @@ function getServerTime(callback) {
   }).fail(function() {
     console.log( "error getting time" );
     callback(new Error('Error getting time'));
+  })
+}
+function getVersion() {
+  $.get( '/version.txt', function( data ) {
+    $('#version').html(data);
+  }).fail(function() {
+    console.log( "error getting version" );
   })
 }
 function setStateByTime(time) {
