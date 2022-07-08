@@ -92,7 +92,14 @@ function setItem(item) {
   $('#show').html(item.Show_Name);
   $('#interpret').html(item.Music_Performer);
   $('#title').html(item.Title);
-  $('#presenter').html(item.Presenter);
+  if(item.Presenter && item.Presenter.length > 0) {
+    $('#presenter').html(item.Presenter);
+    $('#presenter_present').show();
+  } else {
+    $('#presenter').html('');
+    $('#presenter_present').hide();
+  }
+  
   $('#from').html(isoToClock(item.Show_Time_Start));
   $('#to').html(isoToClock(item.Show_Time_Stop));
 }
