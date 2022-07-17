@@ -135,7 +135,9 @@ function getVersion() {
   })
 }
 function setStateByTime(time) {
-  console.log(time.getDay(), time.getHours())
+  let day = time.getDay() || 7 - 1
+  let hour = time.getHours()
+  console.log(day, hour)
 /*
     Kinder-Programm: 
     Sa 7-12 Uhr & So 6-9 Uhr
@@ -145,26 +147,26 @@ function setStateByTime(time) {
     */
     if (
       (
-        time.getDay() == 5 && (time.getHours() >= 7 && time.getHours() <= 12)
+        day == 5 && (hour >= 7 && hour <= 12)
       ) 
     || 
       (
-        time.getDay() == 6 && (time.getHours() >= 6 && time.getHours() <= 9)
+        day == 6 && (hour >= 6 && hour <= 9)
       )
     ) {
       console.log('Kinder-Programm')
       return 'kinder';
     } else if (
       (
-        time.getDay() == 4 && time.getHours() >= 21
+        day == 4 && hour >= 21
       ) 
     || 
       (
-        time.getDay() == 5 && time.getHours() <= 7
+        day == 5 && hour <= 7
       )
     || 
       (
-        time.getDay() == 5 && (time.getHours() >= 12 && time.getHours() <= 24)
+        day == 5 && (hour >= 12 && hour <= 24)
       )
     ) {
       console.log('Szene-Programm')
