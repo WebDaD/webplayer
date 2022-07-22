@@ -93,8 +93,8 @@ function setItem(item) {
   $('#show').html(item.Show_Name);
   $('#interpret').html(item.Music_Performer);
   $('#title').html(item.Title);
-  if(item.Presenter && item.Presenter.length > 0) {
-    $('#presenter').html(item.Presenter);
+  if(item.Show_Team_Presenter && item.Show_Team_Presenter.length > 0) {
+    $('#presenter').html(item.Show_Team_Presenter);
     $('#presenter_present').show();
   } else {
     $('#presenter').html('');
