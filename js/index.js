@@ -66,7 +66,7 @@ function initSocket() {
   console.log('connected socket')
   socket.on('present_update', function(item) {
     console.log('New Item', JSON.stringify(item))
-    addItemToPlaylist();
+    reloadPlaylist();
     setItem(item)
     getServerTime(function(err, time) {
       if(err) {
@@ -104,8 +104,17 @@ function setItem(item) {
   $('#from').html(isoToClock(item.Show_Time_Start));
   $('#to').html(isoToClock(item.Show_Time_Stop));
 }
-function addItemToPlaylist() {
-  $('#playlist').append('<li class="playlist_item">' + $('#interpret').html() + ' - ' + $('#title').html() + '</li>');
+function reloadPlaylist() {
+  $('#playlist').empty();
+  $.getJSON( window["env"]["api"] + '/past', function( data ) {
+    console.log('Got Playlist', JSON.stringify(data))
+    for(let i = 0; i < 3; i++) {
+      if(data[i]) {
+        let item = data[i];
+        $('#playlist').append('<li class="playlist_item">' + item.Music_Performer + ' - ' + item.Title + '</li>');
+      }
+    }
+  }
 }
 function loadError(oError) {
   throw new URIError("The script " + oError.target.src + " didn't load correctly.");
@@ -119,9 +128,11 @@ function affixScriptToHead(url, onloadFunction) {
   newScript.src = url;
 }
 function getServerTime(callback) {
-  $.get( '/time', function( data ) {
+  $.get( '/time', function( data ) { // 2022-08-01T08:10:31+00:00
     console.log('Got Time', data)
-    callback(undefined, new Date(data));
+    var arr = data.split(/[-T:+]/),
+    date = new Date(arr[0], arr[1]-1, arr[2], arr[3], arr[4], arr[5]);
+    callback(undefined, date);
   }).fail(function() {
     console.log( "error getting time" );
     callback(new Error('Error getting time'));
@@ -211,7 +222,7 @@ function loadGraphicalElements(state) {
       break;
   } 
 }
-function isoToClock(iso) {
-  var date = new Date(iso);
-  return date.getHours().toString().padStart(2, '0') + ':' + date.getMinutes().toString().padStart(2, '0');
+function isoToClock(iso) { // iso: "2022-07-31 23:00:00.000"
+  let split  = iso.split(' ')[1].split(':');
+  return split[0].padStart(2, '0') + ':' + split[1].padStart(2, '0');
 }
