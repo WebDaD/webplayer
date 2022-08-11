@@ -114,7 +114,7 @@ function reloadPlaylist() {
         $('#playlist').append('<li class="playlist_item">' + item.Music_Performer + ' - ' + item.Title + '</li>');
       }
     }
-  }
+  })
 }
 function loadError(oError) {
   throw new URIError("The script " + oError.target.src + " didn't load correctly.");
