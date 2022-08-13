@@ -149,44 +149,38 @@ function setStateByTime(time) {
   let day = time.getDay() || 7 - 1
   let hour = time.getHours()
   console.log(day, hour)
-/*
-    Kinder-Programm: 
-    Sa 7-12 Uhr & So 6-9 Uhr
-
-    Szene-Programm: 
-    Fr 21 - Sa 7 Uhr & Sa 12-24 Uhr
-    */
-    if (
-      (
-        day == 5 && (hour >= 7 && hour <= 12)
-      ) 
-    || 
-      (
-        day == 6 && (hour >= 6 && hour <= 9)
-      )
-    ) {
-      console.log('Kinder-Programm')
-      return 'kinder';
-    } else if (
-      (
-        day == 4 && hour >= 21
-      ) 
-    || 
-      (
-        day == 5 && hour <= 7
-      )
-    || 
-      (
-        day == 5 && (hour >= 12 && hour <= 24)
-      )
-    ) {
-      console.log('Szene-Programm')
-      return 'szene';
-    } else {
-      console.log('Nothing-Programm')
+  switch(day) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
       return 'nothing';
-    }
+    case 4: // friday
+      if (hours => 21) {
+        return 'szene';
+      } else {
+        return 'nothing';
+      }
+    case 5: // saturday
+      if (hours => 0 && hours <= 7) {
+        return 'szene';
+      } else if (hours => 7 && hours <= 12) {
+        return 'kinder';
+      } else {
+        return 'szene';
+      }
+    case 6: // sunday
+      if (hours => 0 && hours <= 6) {
+        return 'szene';
+      } else if (hours => 6 && hours <= 9) {
+        return 'kinder';
+      } else {
+        return 'szene';
+      }
+      default:
+        return 'nothing';
   }
+}
 function loadGraphicalElements(state) {
   $('body').css('background-color', elements.background[state]);
   $('body').css('color', elements.font[state]);
