@@ -91,8 +91,15 @@ function loadPlayer() {
 }
 function setItem(item) {
   $('#show').html(item.Show_Name);
-  $('#interpret').html(item.Music_Performer);
-  $('#title').html(item.Title);
+  if(item.Class && item.Class == 'Music') {
+    $('#now_running_ul').show();
+    $('#interpret').html(item.Music_Performer);
+    $('#title').html(item.Title);
+  } else {
+    $('#now_running_ul').hide();
+    $('#interpret').html('');
+    $('#title').html('');
+  }
   if(item.Show_Team_Presenter && item.Show_Team_Presenter.length > 0) {
     $('#presenter').html(item.Show_Team_Presenter);
     $('#presenter_present').show();
@@ -111,7 +118,9 @@ function reloadPlaylist() {
     for(let i = 0; i < 3; i++) {
       if(data[i]) {
         let item = data[i];
-        $('#playlist').append('<li class="playlist_item">' + item.Music_Performer + ' - ' + item.Title + '</li>');
+        if (item.Class && item.Class == 'Music') {
+          $('#playlist').append('<li class="playlist_item">' + item.Music_Performer + ' - ' + item.Title + '</li>');
+        }
       }
     }
   })
