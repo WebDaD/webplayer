@@ -114,11 +114,11 @@ function setItem(item) {
 function reloadPlaylist() {
   $('#playlist_ul').empty();
   $.getJSON( window["env"]["api"] + '/past', function( data ) {
-    let data = data.reverse();
-    console.log('Got Playlist', JSON.stringify(data))
+    let list = data.reverse();
+    console.log('Got Playlist', JSON.stringify(list))
     for(let i = 0; i < 3; i++) {
-      if(data[i]) {
-        let item = data[i];
+      if(list[i]) {
+        let item = list[i];
         if (item.Class && item.Class == 'Music') {
           $('#playlist_ul').append('<li class="playlist_item">' + item.Music_Performer + ' - ' + item.Title + '</li>');
         }
