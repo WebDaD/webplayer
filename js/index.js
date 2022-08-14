@@ -16,6 +16,7 @@ $( document ).ready(function() {
   state = 'nothing'; // can be: nothing, szene, kinder
   loadPlayer();
   getItemFromApi();
+  reloadPlaylist();
   getVersion();
   affixScriptToHead(window["env"]["api"] + '/socket.io/socket.io.js', function () { 
     initSocket();
