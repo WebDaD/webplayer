@@ -1,6 +1,6 @@
 {
   "name": "webplayer",
-  "version": "0.3.16",
+  "version": "0.3.17",
   "description": "Webplayer for Feierwerk",
   "main": "index.html",
   "scripts": {
