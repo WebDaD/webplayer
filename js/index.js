@@ -114,6 +114,7 @@ function setItem(item) {
 function reloadPlaylist() {
   $('#playlist_ul').empty();
   $.getJSON( window["env"]["api"] + '/past', function( data ) {
+    let data = data.reverse();
     console.log('Got Playlist', JSON.stringify(data))
     for(let i = 0; i < 3; i++) {
       if(data[i]) {
