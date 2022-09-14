@@ -113,10 +113,10 @@ function setItem(item) {
   $('#to').html(isoToClock(item.Show_Time_Stop));
 }
 function reloadPlaylist() {
-  $('#playlist_ul').empty();
   $.getJSON( window["env"]["api"] + '/past', function( data ) {
     let list = data.reverse();
     console.log('Got Playlist', JSON.stringify(list))
+    $('#playlist_ul').empty();
     for(let i = 0; i < 3; i++) {
       if(list[i]) {
         let item = list[i];
@@ -173,7 +173,7 @@ function setStateByTime(time) {
         return 'nothing';
       }
     case 5: // saturday
-      if (hours => 0 && hours <= 7) {
+      if (hours => 0 && hours < 7) {
         return 'szene';
       } else if (hours => 7 && hours <= 12) {
         return 'kinder';
@@ -181,7 +181,7 @@ function setStateByTime(time) {
         return 'szene';
       }
     case 6: // sunday
-      if (hours => 0 && hours <= 6) {
+      if (hours => 0 && hours < 6) {
         return 'szene';
       } else if (hours => 6 && hours <= 9) {
         return 'kinder';
