@@ -90,11 +90,18 @@ function loadPlayer() {
   audio.load();
 }
 function setItem(item) {
-  $('#show').html(item.Show_Name);
+  let data = {
+    show: item.Show_Name || 'SHOW NAME MISSING',
+    title: item.Title || 'TITLE MISSING',
+    interpret: item.Music_Performer || 'PERFORMER MISSING',
+    from: item.Show_Time_Start || 'YYYY-MM-DD HH:mm:ss.fff',
+    to: item.Show_Time_Stop || 'YYYY-MM-DD HH:mm:ss.fff',
+  }
+  $('#show').html(data.show);
   if(item.Class && item.Class == 'Music') {
     $('#now_running_ul').show();
-    $('#interpret').html(item.Music_Performer);
-    $('#title').html(item.Title);
+    $('#interpret').html(data.interpret);
+    $('#title').html(data.title);
   } else {
     $('#now_running_ul').hide();
     $('#interpret').html('');
@@ -108,8 +115,8 @@ function setItem(item) {
     $('#presenter_present').hide();
   }
   
-  $('#from').html(isoToClock(item.Show_Time_Start));
-  $('#to').html(isoToClock(item.Show_Time_Stop));
+  $('#from').html(isoToClock(data.from));
+  $('#to').html(isoToClock(data.to));
 }
 function reloadPlaylist() {
   $.getJSON( window["env"]["api"] + '/past', function( data ) {
