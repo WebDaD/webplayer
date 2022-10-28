@@ -1,4 +1,3 @@
-// TODO: object with graphical information and texts
 var elements = {
   background: {
     kinder: '#a41344',
@@ -161,10 +160,10 @@ function setStateByTime(time) {
   let hour = time.getHours()
   console.log(day, hour)
   switch(day) {
-    case 0:
-    case 1:
-    case 2:
-    case 3:
+    case 0: // Monday
+    case 1: // Tuesday
+    case 2: // Wednesday
+    case 3: // Thursday
       return 'nothing';
     case 4: // friday
       if (hours => 21) {
