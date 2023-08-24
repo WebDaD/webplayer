@@ -13,6 +13,7 @@ var elements = {
 
 $( document ).ready(function() {
   state = 'nothing'; // can be: nothing, szene, kinder
+  renderCopyRightYear();
   loadPlayer();
   getItemFromApi();
   reloadPlaylist();
@@ -236,4 +237,8 @@ function loadGraphicalElements(state) {
 function isoToClock(iso) { // iso: "2022-07-31 23:00:00.000"
   let split  = iso.split(' ')[1].split(':');
   return split[0].padStart(2, '0') + ':' + split[1].padStart(2, '0');
+}
+function renderCopyRightYear() {
+  let year = new Date().getFullYear();
+  $('#copy_right_year').html(year);
 }
