@@ -35,6 +35,26 @@ $( document ).ready(function() {
       }
     });
   }
+  if(urlParams.has('logo')) {
+    let logo = urlParams.get('logo');
+    if(logo == '0') {
+      $('header').hide();
+    } else {
+      $('header').show();
+    }
+  } else {
+    $('header').show();
+  }
+  if(urlParams.has('footer')) {
+    footer = urlParams.get('footer');
+    if(footer == '0') {
+      $('footer').hide();
+    } else {
+      $('footer').show();
+    }
+  } else {
+    $('footer').show();
+  }
   let audio = $("audio").get(0);
   if(audio.paused) {
     audio.play();

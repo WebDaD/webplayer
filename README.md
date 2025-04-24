@@ -26,3 +26,13 @@ docker run \
 -p "${WP_PORT}":80 \
 -d webplayer:latest
 ```
+
+## Build and Push
+
+```sh
+podman login docker.io
+podman build -t dsigmund/webplayer:0.3.24 .
+podman build -t dsigmund/webplayer:latest .
+podman push dsigmund/webplayer:0.3.24
+podman push dsigmund/webplayer:latest
+```
