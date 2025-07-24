@@ -22,16 +22,34 @@ $( document ).ready(function() {
     initSocket();
   });
   var urlParams = new URLSearchParams(window.location.search);
+  let reloadEnabled = urlParams.has('reload');
+  let lastState = state;
+
   if(urlParams.has('state')) {
     state = urlParams.get('state');
     loadGraphicalElements(state);
   } else {
     getServerTime(function(err, time) {
       if(err) {
-      console.log(err);
+        console.log(err);
       } else {
         state = setStateByTime(time);
         loadGraphicalElements(state);
+
+        // Add reload logic here
+        if (reloadEnabled) {
+          lastState = state;
+          setInterval(function() {
+            getServerTime(function(err, time) {
+              if (!err) {
+                let newState = setStateByTime(time);
+                if (newState !== lastState) {
+                  location.reload();
+                }
+              }
+            });
+          }, 60000); // check every 60 seconds
+        }
       }
     });
   }
