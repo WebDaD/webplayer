@@ -82,13 +82,13 @@ $( document ).ready(function() {
     if(audio.paused) {
       audio.play();
       $(".player_control").addClass("rotate"); // <-- spin when playing
-      $("#button_szene").attr("src", "images/button_szene_pause.png"); // <-- show pause symbol
-      $("#button_kinder").attr("src", "images/button_kinder_pause.png");
+      $("#button_szene").attr("src", "images/button_szene.png"); // <-- show play symbol
+      $("#button_kinder").attr("src", "images/button_kinder.png");
     } else {
       audio.pause();
       $(".player_control").removeClass("rotate"); // <-- stop spinning when paused
-      $("#button_szene").attr("src", "images/button_szene.png"); // <-- show play symbol
-      $("#button_kinder").attr("src", "images/button_kinder.png");
+      $("#button_szene").attr("src", "images/button_szene_pause.png"); // <-- show pause symbol
+      $("#button_kinder").attr("src", "images/button_kinder_pause.png");
     }
   });
 });
