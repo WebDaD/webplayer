@@ -184,15 +184,18 @@ function affixScriptToHead(url, onloadFunction) {
   newScript.src = url;
 }
 function getServerTime(callback) {
-  $.get( '/time', function( data ) { // 2022-08-01T08:10:31+00:00
-    console.log('Got Time', data)
-    var arr = data.split(/[-T:+]/),
-    date = new Date(arr[0], arr[1]-1, arr[2], arr[3], arr[4], arr[5]);
-    callback(undefined, date);
+  $.get('/time', function(data) { // e.g. "2022-08-01T08:10:31+00:00"
+    console.log('Got Time', data);
+    // Parse as UTC
+    let utcDate = new Date(data);
+    // Convert to Europe/Berlin
+    let berlinDateStr = utcDate.toLocaleString('en-CA', { timeZone: 'Europe/Berlin' });
+    let berlinDate = new Date(berlinDateStr);
+    callback(undefined, berlinDate);
   }).fail(function() {
-    console.log( "error getting time" );
+    console.log("error getting time");
     callback(new Error('Error getting time'));
-  })
+  });
 }
 function getVersion() {
   $.get( '/version.txt', function( data ) {

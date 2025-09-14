@@ -31,8 +31,8 @@ docker run \
 
 ```sh
 podman login docker.io
-podman build --platform=linux/amd64 -t dsigmund/webplayer:0.3.27 .
+podman build --platform=linux/amd64 -t dsigmund/webplayer:0.3.29 .
 podman build --platform=linux/amd64 -t dsigmund/webplayer:latest .
-podman push dsigmund/webplayer:0.3.27
+podman push dsigmund/webplayer:0.3.29
 podman push dsigmund/webplayer:latest
 ```
