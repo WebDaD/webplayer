@@ -202,39 +202,39 @@ function getVersion() {
   })
 }
 function setStateByTime(time) {
-  let day = time.getDay() || 7 - 1
-  let hour = time.getHours()
-  console.log(day, hour)
+  let day = time.getDay(); // 0 = Sunday, 1 = Monday, ...
+  let hour = time.getHours();
+  console.log(day, hour);
   switch(day) {
-    case 0: // Monday
-    case 1: // Tuesday
-    case 2: // Wednesday
-    case 3: // Thursday
+    case 1: // Monday
+    case 2: // Tuesday
+    case 3: // Wednesday
+    case 4: // Thursday
       return 'nothing';
-    case 4: // friday
-      if (hours => 21) {
+    case 5: // Friday
+      if (hour >= 21) {
         return 'szene';
       } else {
         return 'nothing';
       }
-    case 5: // saturday
-      if (hours => 0 && hours < 7) {
+    case 6: // Saturday
+      if (hour >= 0 && hour < 7) {
         return 'szene';
-      } else if (hours => 7 && hours <= 12) {
+      } else if (hour >= 7 && hour <= 12) {
         return 'kinder';
       } else {
         return 'szene';
       }
-    case 6: // sunday
-      if (hours => 0 && hours < 6) {
+    case 0: // Sunday
+      if (hour >= 0 && hour < 6) {
         return 'szene';
-      } else if (hours => 6 && hours <= 9) {
+      } else if (hour >= 6 && hour <= 9) {
         return 'kinder';
       } else {
         return 'szene';
       }
-      default:
-        return 'nothing';
+    default:
+      return 'nothing';
   }
 }
 function loadGraphicalElements(state) {
