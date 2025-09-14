@@ -81,14 +81,14 @@ $( document ).ready(function() {
     let audio = $("audio").get(0);
     if(audio.paused) {
       audio.play();
-      $(".player_control").removeClass("rotate");
-      $("#button_szene").attr("src", "images/button_szene.png")
-      $("#button_kinder").attr("src", "images/button_kinder.png")
+      $(".player_control").addClass("rotate"); // <-- spin when playing
+      $("#button_szene").attr("src", "images/button_szene_pause.png"); // <-- show pause symbol
+      $("#button_kinder").attr("src", "images/button_kinder_pause.png");
     } else {
       audio.pause();
-      $(".player_control").addClass("rotate");
-      $("#button_szene").attr("src", "images/button_szene_pause.png")
-      $("#button_kinder").attr("src", "images/button_kinder_pause.png")
+      $(".player_control").removeClass("rotate"); // <-- stop spinning when paused
+      $("#button_szene").attr("src", "images/button_szene.png"); // <-- show play symbol
+      $("#button_kinder").attr("src", "images/button_kinder.png");
     }
   });
 });
